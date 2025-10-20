@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Study Planner</title>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            text-align: center;
+        }
+        input, button {
+            padding: 10px;
+            margin: 5px;
+            width: 80%;
+        }
+        .output {
+            margin-top: 20px;
+            text-align: left;
+            background: #f4f4f4;
+            padding: 15px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>📚 AI Study Planner</h2>
+    <p>Enter your goal, and the planner will generate a daily schedule.</p>
+
+    <input type="number" id="units" placeholder="Total units (e.g., 800 words)">
+    <input type="number" id="days" placeholder="Total days (e.g., 14)">
+    <button onclick="generatePlan()">Generate Study Plan</button>
+
+    <div class="output" id="result"></div>
+
+    <script>
+        function generatePlan() {
+            let units = document.getElementById('units').value;
+            let days = document.getElementById('days').value;
+
+            if (!units || !days) {
+                alert("Please enter both values.");
+                return;
+            }
+
+            let dailyGoal = Math.round(units / days);
+            let result = "";
+
+            for (let i = 1; i <= days; i++) {
+                result += `Day ${i}: Study approximately ${dailyGoal} units<br>`;
+            }
+
+            document.getElementById('result').innerHTML = result;
+        }
+    </script>
+
+</body>
+</html>
